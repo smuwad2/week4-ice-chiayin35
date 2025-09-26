@@ -19,7 +19,20 @@
     <script>
         
         // add code here
-        
+        // when select_item is changed
+        const shoppingCart = [];
+
+        document.getElementById("select_item").addEventListener("change", function(event) {
+            var item = event.target.value;
+            if (!shoppingCart.includes(item)) {
+                shoppingCart.push(item);
+
+                let li = document.createElement("li");
+                li.textContent = item;
+
+                document.getElementById("shopList").appendChild(li);
+            }
+        });
         
     </script>
 

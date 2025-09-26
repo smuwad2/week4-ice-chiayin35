@@ -10,20 +10,41 @@
    <p>Get it done today</p>
 
    <input type="text" id="inputText">
+   <button id="enter-button" onclick="addTask()">Enter</button>
    <!-- add a button here for adding new item -->
 
-   <ul>
-      <li>Notebook<!--<button>Delete</button></li>-->
-      <li>Jello</li>
-      <li>Spinach</li>
-      <li>Rice</li>
-      <li>Birthday Cake</li>
-      <li>Candles</li>
+   <ul id="my-list">
+      <li>Notebook<button>Delete</button></li>
+      <li>Jello<button>Delete</button></li>
+      <li>Spinach<button>Delete</button></li>
+      <li>Rice<button>Delete</button></li>
+      <li>Birthday Cake<button>Delete</button></li>
+      <li>Candles<button>Delete</button></li>
    </ul>
 
    <script>
 
       // add code here
+      function addTask() {
+         var task = document.getElementById("inputText").value;
+         if (task != "") {
+            const li = document.createElement("li");
+            li.textContent = task;
+
+            const deletebuttton = document.createElement("button");
+            deletebuttton.textContent = "Delete";
+            li.appendChild(deletebuttton);
+
+            document.getElementById("my-list").appendChild(li);
+         }
+         document.getElementById("inputText").value = "";
+      }
+
+      document.getElementById("my-list").addEventListener("click", function(event) {
+         if (event.target.tagName === "BUTTON") {
+            event.target.parentElement.remove();
+         }
+      });
 
    </script>
 
